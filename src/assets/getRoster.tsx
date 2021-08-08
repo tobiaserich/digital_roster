@@ -14,7 +14,7 @@ interface EmployeesItem {
   i: number;
 }
 
-interface SinglePersonRoster {
+export interface SinglePersonRoster {
   dp: string[];
   name: string | null;
   status?: string;
@@ -24,7 +24,7 @@ interface SinglePersonRoster {
 interface CustomTextMarkedContent extends TextMarkedContent {
   height: number;
   str: string;
-  transform: any;
+  transform: never;
 }
 
 const getRoster = (): Promise<
@@ -94,8 +94,7 @@ const getRoster = (): Promise<
     employees.forEach((entry, index) => {
       const totalEmployees = entry.employees;
       const findDate =
-        totalEmployees.filter((entry, index) => entry.str === "01  ").length >
-          1 &&
+        totalEmployees.filter((entry) => entry.str === "01  ").length > 1 &&
         totalEmployees.findIndex(
           (entry, index) => entry.str === "01  " && index > 13
         );
@@ -197,7 +196,7 @@ const getRoster = (): Promise<
           }
         }
       });
-      employeePlus.forEach((entry, index) => {
+      employeePlus.forEach((entry) => {
         entry.dp.length % 2 === 0 ? entry.dp.shift() : "";
         entry.dp.shift();
       });
