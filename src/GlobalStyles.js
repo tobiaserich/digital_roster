@@ -21,7 +21,7 @@ function GlobalStyles() {
           min-height:100vh;
           height:100%;
           max-width: 500px;
-background-color:white;
+background-color:${theme.colors.background};
         }
       }
       `}
